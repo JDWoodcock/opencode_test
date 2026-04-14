@@ -13,10 +13,10 @@ add_imd <- function(df, zones) {
 }
 
 # Read zones that contain IMD10
-ZONES_CSV  <- "/media/ali/Expansion/backup_tabea/manchester-main/input/zoneSystem.csv"
+ZONES_CSV  <- "data/zoneSystem.csv"
 zones    <- readr::read_csv(ZONES_CSV, show_col_types = FALSE)
 
-synth_data <- read_csv("/media/ali/Expansion/backup_tabea/Ali/manchester/scenOutput/base/microData/pp_exposure_2021.csv")
+synth_data <- read_csv("data/pp_exposure_2021_base_140725.csv")
 
 # Rename var
 synth_data <- synth_data |> rename(oaID = zone)
@@ -51,7 +51,7 @@ MA <- read_csv("data/MA_acm.csv") |>
   rename(gender = population) |> 
   mutate(gender = if_else(gender == "Men", "Male", "Female"))
 
-HSE <- read_csv("/media/ali/Expansion/backup_tabea/Ali/manchester/input/health/HSE/processed_hse.csv")
+HSE <- read_csv("data/processed_hse.csv")
 
 # Based on age_group, gender and imd levels, sample from df_B to df_A
 assign_sports_PA <- function(df_A, df_B) {
